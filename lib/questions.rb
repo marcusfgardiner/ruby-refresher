@@ -1,23 +1,31 @@
 # keep only the elements that start with an a
 def select_elements_starting_with_a(array)
-    
+    array.select {|i| i[0] == "a"}
 end
 
 # keep only the elements that start with a vowel
 def select_elements_starting_with_vowel(array)
+    array.select {|i|  i[0] == "a" || i[0] =="e" || i[0] == "i" || i[0] == "o" || i[0] == "u"}
 end
 
 # remove instances of nil (but NOT false) from an array
 def remove_nils_from_array(array)
+    array.select {|i| i != nil}
 end
 
 # remove instances of nil AND false from an array
 def remove_nils_and_false_from_array(array)
+    array.select {|i| i != nil && i != false }
 end
 
 # don't reverse the array, but reverse every word inside it. e.g.
 # ['dog', 'monkey'] becomes ['god', 'yeknom']
 def reverse_every_element_in_array(array)
+    new_array = Array.new
+    array.each {|element|
+    new_array << element.reverse
+    } 
+    new_array
 end
 
 # given an array of student names, like ['Bob', 'Dave', 'Clive']
@@ -25,6 +33,22 @@ end
 # [['Bob', 'Clive'], ['Bob', 'Dave'], ['Clive', 'Dave']]
 # make sure you don't have the same pairing twice,
 def every_possible_pairing_of_students(array)
+    # 1 - 1st with 2nd, 3rd ... final
+    i = 1
+    current_student = 0
+    max = array.size
+    new_array = []
+    array.each {|student|
+        # 3 -  final does nothing
+        while i < max
+        new_array << [student,array[i]]
+        i += 1
+        end
+    # 2 -  2nd with 3rd, 4th ... final
+    current_student += 1
+    i = 1 + current_student
+    }
+    new_array
 end
 
 # discard the first 3 elements of an array,
