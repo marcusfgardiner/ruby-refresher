@@ -54,26 +54,49 @@ end
 # discard the first 3 elements of an array,
 # e.g. [1, 2, 3, 4, 5, 6] becomes [4, 5, 6]
 def all_elements_except_first_3(array)
+    array[3..-1]
 end
 
 # add an element to the beginning of an array
 def add_element_to_beginning_of_array(array, element)
+    array.unshift(element)
 end
 
 # sort an array of words by their last letter, e.g.
 # ['sky', 'puma', 'maker'] becomes ['puma', 'maker', 'sky']
 def array_sort_by_last_letter_of_word(array)
+    new_array = Array.new
+    array.each {|element|
+    new_array << element.reverse
+    } 
+    new_array.sort!
+    new_array2 = Array.new
+    new_array.each {|element|
+    new_array2 << element.reverse
+    } 
+    new_array2
 end
 
 # cut strings in half, and return the first half, e.g.
 # 'banana' becomes 'ban'. If the string is an odd number of letters
 # round up - so 'apple' becomes 'app'
 def get_first_half_of_string(string)
+    # Find string length
+    # half string length
+    # if odd, add one
+    string_length = string.size
+    string_length += 1 if string_length.odd?
+    half_string_length = string_length/2
+    string[0..(half_string_length-1)]
+    #return string up to half
 end
 
 # turn a positive integer into a negative integer. A negative integer
 # stays negative
 def make_numbers_negative(number)
+    new_number = number if number < 0
+    new_number = -number if number > 0
+    new_number
 end
 
 # turn an array of numbers into two arrays of numbers, one an array of
@@ -81,6 +104,21 @@ end
 # even numbers come first
 # so [1, 2, 3, 4, 5, 6] becomes [[2, 4, 6], [1, 3, 5]]
 def separate_array_into_even_and_odd_numbers(array)
+    #Find out if each element even or odd
+    # if even, put into one array
+    # if odd, put into other array
+    # combine arrays
+    even_array = Array.new
+    odd_array = Array.new
+    final_array = Array.new
+    array.each{|number|
+    if number.odd?
+        odd_array << number
+    else
+        even_array << number
+    end
+    }
+    final_array = [even_array,odd_array]
 end
 
 # count the numbers of elements in an element which are palindromes
@@ -88,10 +126,25 @@ end
 # e.g. 'bob'. So in the array ['bob', 'radar', 'eat'], there
 # are 2 palindromes (bob and radar), so the method should return 2
 def number_of_elements_that_are_palindromes(array)
+    # reverse the element
+    # check if reversed element is same as previous element
+    # add one to the count if yes
+    count = 0
+    array.each {|element|
+    count += 1 if element == element.reverse
+    }
+    count
 end
 
 # return the shortest word in an array
 def shortest_word_in_array(array)
+    # check each element of array
+    # if the shortest, update the shortest word
+    shortest_word = array[0]
+    array.each {|word|
+    shortest_word = word if shortest_word>word
+    }
+    shortest_word
 end
 
 # return the shortest word in an array
