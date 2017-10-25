@@ -142,32 +142,52 @@ def shortest_word_in_array(array)
     # if the shortest, update the shortest word
     shortest_word = array[0]
     array.each {|word|
-    shortest_word = word if shortest_word>word
+    shortest_word = word if shortest_word.size>word.size
     }
     shortest_word
 end
 
-# return the shortest word in an array
+# return the longest word in an array
 def longest_word_in_array(array)
+    longest_word = array[0]
+    array.each {|word|
+    longest_word = word if longest_word.size<word.size
+    }
+    longest_word
 end
 
 # add up all the numbers in an array, so [1, 3, 5, 6]
 # returns 15
 def total_of_array(array)
+    # iterate through array
+    # have a sum variable keeping track
+    # add to sum variable each time
+    sum = 0
+    array.each {|x|
+        sum += x
+    }
+    sum
 end
 
 # turn an array into itself repeated twice. So [1, 2, 3]
 # becomes [1, 2, 3, 1, 2, 3]
 def double_array(array)
+    array*2
 end
 
 # convert a symbol into a string
 def turn_symbol_into_string(symbol)
+    symbol.to_s
 end
 
 # get the average from an array, rounded to the nearest integer
 # so [10, 15, 25] should return 17
 def average_of_array(array)
+    sum = 0
+    array.each {|x|
+        sum += x
+    }
+    (sum.round(2) / array.size).round
 end
 
 # get all the elements in an array, up until the first element
@@ -175,12 +195,29 @@ end
 # [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
 # becomes [1, 3, 5, 4, 1, 2]
 def get_elements_until_greater_than_five(array)
+    # go through array putting into new array
+    # if greater than 5, stop
+    new_array = []
+    array.each {|x|
+        break if x > 5
+        new_array << x
+    }
+    new_array
 end
 
 # turn an array (with an even number of elements) into a hash, by
 # pairing up elements. e.g. ['a', 'b', 'c', 'd'] becomes
 # {'a' => 'b', 'c' => 'd'}
 def convert_array_to_a_hash(array)
+    # work out how many key value pairs
+    #loop through adding keys and values
+    hash=Hash.new
+    number_of_keys = (array.size)
+    number_of_keys.times {|i|
+    next if i.odd?
+    hash[array[i]] = array[i+1]
+    }
+    hash
 end
 
 # get all the letters used in an array of words and return
