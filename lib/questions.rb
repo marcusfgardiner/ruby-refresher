@@ -225,23 +225,55 @@ end
 # . e.g. the array ['cat', 'dog', 'fish'] becomes
 # ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
 def get_all_letters_in_array_of_words(array)
+    #go through each word
+    new_array = []
+    array.each {|word|
+        new_array << word.split(//)
+    }
+    new_array.flatten.sort
+    #separate each letter and add to new array of letters - .split(//)
+    #take all letters and sort for alphabet
 end
 
 # swap the keys and values in a hash. e.g.
 # {'a' => 'b', 'c' => 'd'} becomes
 # {'b' => 'a', 'd' => 'c'}
 def swap_keys_and_values_in_a_hash(hash)
+    hash.invert
 end
 
 # in a hash where the keys and values are all numbers
 # add all the keys and all the values together, e.g.
 # {1 => 1, 2 => 2} becomes 6
 def add_together_keys_and_values(hash)
+    #Extract all keys and values
+    #Sum all items
+    new_array = []
+    new_array << hash.keys
+    new_array << hash.values
+    new_array = new_array.flatten
+    sum = 0
+    new_array.each {|x|
+        sum += x
+    }
+    sum
 end
 
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
+    #iterate through letter by letter and see if caps = what it was before
+    new_string = ""
+    string.split("").each {|letter|
+        new_string << " " if letter == " "
+        if letter != letter.capitalize
+              new_string << letter
+        end
+    }
+    new_string
+    #if yes, don't put the letter into a new string
+    # if not a capital, do put the letter in a new string
+    #final value is the string
 end
 
 # round up a float up and convert it to an Integer,
