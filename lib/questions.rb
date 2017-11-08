@@ -276,6 +276,8 @@ def remove_capital_letters_from_string(string)
     #final value is the string
 end
 
+#----------------------------------------------------- Did this on Mac - need to pull the updates in
+
 # round up a float up and convert it to an Integer,
 # so 3.214 becomes 4
 def round_up_number(float)
@@ -304,28 +306,54 @@ end
 def titleize_a_string(string)
 end
 
+#-----------------------------------------------------Did this on Mac - need to pull the updates in
+
+#################################################################################### Stuck
 # return true if a string contains any special characters
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
+    true_or_false = false
+    # collect all non-special characters
+    chars = []
+    chars = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
+    chars << " "
+    # check each part of string to see if any special characters
+   string.split("").each {|character|
+        if chars.include?(character)
+        else
+            true_or_false = true
+        end
+    }
+    true_or_false
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
+    range.max
 end
 
 # should return true for a 3 dot range like 1...20, false for a
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+    range.to_s.include?("...")
 end
 
 # get the square root of a number
 def square_root_of(number)
+    Math.sqrt(number)
 end
 
+#################################################################################### Stuck
 # count the number of words in a file
 def word_count_a_file(file_path)
+    word_count = 0
+    f = File.open(file_path, "r")
+        f.each_line {|line|
+            word_count += line.to_s.split.size
+        }
+    word_count
 end
 
 # --- tougher ones ---
