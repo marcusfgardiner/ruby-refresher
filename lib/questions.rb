@@ -345,7 +345,6 @@ def square_root_of(number)
     Math.sqrt(number)
 end
 
-#################################################################################### Stuck
 # count the number of words in a file
 def word_count_a_file(file_path)
     word_count = 0
