@@ -316,13 +316,14 @@ def check_a_string_for_special_characters(string)
     true_or_false = false
     # collect all non-special characters
     chars = []
-    chars = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
+    chars = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a + (0..9).to_a + ["0","1","2","3","4","5","6","7","8","9"]
     chars << " "
     # check each part of string to see if any special characters
    string.split("").each {|character|
-        if chars.include?(character)
-        else
+        if !chars.include?(character)
             true_or_false = true
+        else
+            next
         end
     }
     true_or_false
