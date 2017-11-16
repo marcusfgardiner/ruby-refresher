@@ -308,7 +308,6 @@ end
 
 #-----------------------------------------------------Did this on Mac - need to pull the updates in
 
-#################################################################################### Stuck
 # return true if a string contains any special characters
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
@@ -362,19 +361,40 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+    send(str_method)
 end
 
 # return true if the date is a uk bank holiday for 2014
 # the list of bank holidays is here:
 # https://www.gov.uk/bank-holidays
 def is_a_2014_bank_holiday?(date)
+   # e.g. year, month, day
+   # date format:  Time.local(1976, 8, 3)
+   y = 2014
+      # store array of bank holiday dates
+    array = [Time.local(y,12,25),Time.local(y,12,26),Time.local(y,8,25),Time.local(y,5,26),Time.local(y,5,5),Time.local(y,4,21),Time.local(y,4,18),Time.local(y,1,1)]
+   # check if date can be found in array
+   array.each {|bank_hol_date|
+    return true if bank_hol_date == date
+   }
+   false
+   # if yes - return true
+   # if no - return false
 end
 
 # given your birthday this year, this method tells you
 # the next year when your birthday will fall on a friday
 # e.g. january 1st, will next be a friday in 2016
 # return the day as a capitalized string like 'Friday'
+#----------------------------------------------------------------------NOT YET COMPLETE
 def your_birthday_is_on_a_friday_in_the_year(birthday)
+    # Key: tells you the YEAR where birthday will be on a Fri
+    # each year = moves up 2 days
+    loop {
+    if birthday.friday? == true
+        return birthday.year
+    end
+    birthday = birthday + (2*24*60*60) }
 end
 
 # in a file, total the number of times words of different lengths
