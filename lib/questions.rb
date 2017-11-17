@@ -386,7 +386,6 @@ end
 # the next year when your birthday will fall on a friday
 # e.g. january 1st, will next be a friday in 2016
 # return the day as a capitalized string like 'Friday'
-#----------------------------------------------------------------------NOT YET COMPLETE
 def your_birthday_is_on_a_friday_in_the_year(birthday)
     # Key: tells you the YEAR where birthday will be on a Fri
     # each year = moves up 2 days
@@ -394,7 +393,8 @@ def your_birthday_is_on_a_friday_in_the_year(birthday)
     if birthday.friday? == true
         return birthday.year
     end
-    birthday = birthday + (2*24*60*60) }
+    # key -> don't need to account for day of week change in addition, only 1 year onwards - the .friday? will work out what day of the week it is
+    birthday = birthday + (365*24*60*60) }
 end
 
 # in a file, total the number of times words of different lengths
@@ -402,7 +402,22 @@ end
 # I have 5 words which are 3 letters long, 1 which is 2 letters long
 # and 1 that is 4 letters long. Return it as a hash in the format
 # word_length => count, e.g. {2 => 1, 3 => 5, 4 => 1}
+#-------------------------------------------------------------------------------NOT YET COMPLETE
 def count_words_of_each_length_in_a_file(file_path)
+    # take each word, get the size and store it
+    word_size_array = Array.new
+    f = File.read(file_path)
+        f.split.each {|word|
+        word_size_array << word.gsub(/[.,]/,"").size
+    }
+    # count the frequency of each number
+    #store in a hash
+    # give hash default value of 0 to avoid nil class issue, that way, for each key, counting up by 1
+    hash = Hash.new(0)
+    word_size_array.each {|x|
+        hash[x] += 1
+    }
+    hash
 end
 
 # implement fizzbuzz without modulo, i.e. the % method
