@@ -402,7 +402,6 @@ end
 # I have 5 words which are 3 letters long, 1 which is 2 letters long
 # and 1 that is 4 letters long. Return it as a hash in the format
 # word_length => count, e.g. {2 => 1, 3 => 5, 4 => 1}
-#-------------------------------------------------------------------------------NOT YET COMPLETE
 def count_words_of_each_length_in_a_file(file_path)
     # take each word, get the size and store it
     word_size_array = Array.new
@@ -424,7 +423,32 @@ end
 # go from 1 to 100
 # (there's no RSpec test for this one)
 def fizzbuzz_without_modulo
+    please enter a number
+    puts "Please enter a whole number, no decimals"
+    input = gets.chomp.to_i
+    ######################### TEST ALL 1-100
+    #100.times do |i|
+    #    input = i
+    #########################################
+        #Work around: if #.0/# - #/# > 0
+        #if multiple of 3 or 5, fizzbuzz
+        if (input/3.0) - (input/3) == 0 && (input/5.0) - (input/5) == 0
+            puts "fizzbuzz"
+        #if multiple of 3, fizz
+        elsif
+            (input/3.0) - (input/3) == 0
+            puts "fizz"
+        #if multiple of 5, buzz
+        elsif
+            (input/5.0) - (input/5) == 0
+            puts "buzz"
+        else puts input.to_s
+        end
+    end
 end
+
+# To test fizzbuzz:
+##### fizzbuzz_without_modulo
 
 # print the lyrics of the song 99 bottles of beer on the wall
 # http://www.99-bottles-of-beer.net/lyrics.html
