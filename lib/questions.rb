@@ -426,7 +426,7 @@ def fizzbuzz_without_modulo
     please enter a number
     puts "Please enter a whole number, no decimals"
     input = gets.chomp.to_i
-    ######################### TEST ALL 1-100
+    ######################### Uncomment this to TEST ALL 1-100
     #100.times do |i|
     #    input = i
     #########################################
@@ -444,10 +444,11 @@ def fizzbuzz_without_modulo
             puts "buzz"
         else puts input.to_s
         end
-    end
+    #########################################
+    # end
 end
 
-# To test fizzbuzz:
+# Uncommented this to test fizzbuzz:
 ##### fizzbuzz_without_modulo
 
 # print the lyrics of the song 99 bottles of beer on the wall
@@ -456,5 +457,23 @@ end
 # beer on the wall, and print 'no more bottles of beer on the wall'
 # at the end.
 # (there's no RSpec test for this one)
+ 
 def ninety_nine_bottles_of_beer
+    #99 bottles of beer on the wall, 99 bottles of beer.
+    #Take one down and pass it around, 98 bottles of beer on the wall.
+    number_of_bottles = 99
+    while number_of_bottles > 1
+        puts "#{number_of_bottles} bottles of beer on the wall, #{number_of_bottles} bottles of beer"
+        puts "Take one down and pass it around, #{number_of_bottles - 1} bottles of beer on the wall."
+        number_of_bottles -= 1
+    end
+#################################
+    puts "1 bottle of beer on the wall, 1 bottle of beer"
+    puts "Take one down and pass it around, no more bottles of beer on the wall."
+#################################
+    puts "No more bottles of beer on the wall, no more bottles of beer."
+    puts "Go to the store and buy some more, 99 bottles of beer on the wall."
 end
+ 
+
+ninety_nine_bottles_of_beer
